@@ -1,95 +1,104 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+// app/page.tsx
+import React from "react";
+import styled from "styled-components";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	text-align: center;
+`;
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+const Heading = styled.h1`
+	margin-bottom: 40px;
+`;
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+const SecondHeader = styled.h1`
+	margin-bottom: 40px;
+`;
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+const Message = styled.div`
+	margin-bottom: 40px;
+`;
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+const SocialIcons = styled.div`
+	margin-bottom: 40px;
+`;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+const BlogLink = styled.a`
+	color: #fff; /* Set your desired text color */
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 18px;
+	transition: color 0.3s ease;
+	background: rgba(255, 255, 255, 0.1);
+	padding: 20px;
+	border-radius: 10px;
+
+	&:hover {
+		color: #ffd700; /* Set your desired hover color */
+	}
+`;
+
+const ComingSoon = () => {
+	return (
+		<Container>
+			{/* Your Name */}
+			<Heading>Rakesh Katti</Heading>
+			<SecondHeader>Coming Soon</SecondHeader>
+
+			{/* Coming Soon Message */}
+			<Message>
+				<p>
+					This website is under construction and will be available shortly. Stay
+					tuned!
+					<br />
+					Follow on these co-ordinates to know more!
+				</p>
+			</Message>
+
+			{/* Social Media Icons with Links */}
+			<SocialIcons>
+				<a
+					href="https://www.instagram.com/rakeshkatti/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaInstagram size={30} style={{ margin: "0 10px" }} />
+				</a>
+				<a
+					href="https://twitter.com/rakesh_katti"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaXTwitter size={30} style={{ margin: "0 10px" }} />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/rakeshkatti/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<FaLinkedin size={30} style={{ margin: "0 10px" }} />
+				</a>
+			</SocialIcons>
+
+			{/* Link to Blog */}
+			<p>
+				<BlogLink
+					href="https://blog.rakeshkatti.in/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Go to my Blog on Hashnode
+				</BlogLink>
+			</p>
+		</Container>
+	);
+};
+
+export default ComingSoon;
