@@ -123,7 +123,7 @@ const ComingSoon = () => {
 				</p>
 
 				<FYIText>
-					My previous site rakeshkatti.com got hijacked. Thought it`&apos;s a
+					My previous site rakeshkatti.com got hijacked. Thought it&apos;s a
 					good time for a redesign.
 				</FYIText>
 			</Container>
