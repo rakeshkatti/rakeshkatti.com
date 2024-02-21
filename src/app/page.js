@@ -1,10 +1,11 @@
 "use client";
 // app/page.tsx
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Script from "next/script";
+import "pico-css";
 
 const Container = styled.div`
 	display: flex;
@@ -31,13 +32,11 @@ const SocialIcons = styled.div`
 	margin-bottom: 40px;
 `;
 
-const BlogLink = styled.a`
-	color: #fff; /* Set your desired text color */
+const BlogLink = styled.button`
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 18px;
 	transition: color 0.3s ease;
-	background: rgba(255, 255, 255, 0.1);
 	padding: 20px;
 	border-radius: 10px;
 
@@ -55,7 +54,24 @@ const FYIText = styled.p`
 	color: #888; /* Set your desired text color */
 `;
 
+const ThemeSwitcher = styled.div`
+	position: fixed;
+	top: 50px;
+	right: 50px;
+	width: 175px;
+	font-size: 15px;
+	display: flex;
+	justify-content: space-between;
+`;
+
 const ComingSoon = () => {
+	const [dark, setDark] = useState(true);
+	const html = document.querySelector("html");
+	if (dark) {
+		html.dataset.theme = "dark";
+	} else {
+		html.dataset.theme = "light";
+	}
 	return (
 		<>
 			<Script
@@ -72,10 +88,21 @@ const ComingSoon = () => {
 				`}
 			</Script>
 			<Container>
+				<ThemeSwitcher>
+					Use dark mode <br />
+					<input
+						onChange={(e) => {
+							setDark(!dark);
+						}}
+						type="checkbox"
+						role="switch"
+						checked={dark}
+						id="toggle"
+					/>
+				</ThemeSwitcher>
 				{/* Your Name */}
 				<Heading>Rakesh Katti</Heading>
 				<SecondHeader>Frontend Engineer</SecondHeader>
-
 				{/* Coming Soon Message */}
 				<Message>
 					<p>
@@ -85,7 +112,6 @@ const ComingSoon = () => {
 						Follow on these co-ordinates to know more!
 					</p>
 				</Message>
-
 				{/* Social Media Icons with Links */}
 				<SocialIcons>
 					<a
@@ -110,7 +136,6 @@ const ComingSoon = () => {
 						<FaXTwitter size={30} style={{ margin: "0 10px" }} />
 					</a>
 				</SocialIcons>
-
 				{/* Link to Blog */}
 				<p>
 					<BlogLink
@@ -121,7 +146,6 @@ const ComingSoon = () => {
 						Go to my Blog on Hashnode
 					</BlogLink>
 				</p>
-
 				<FYIText>
 					My previous site rakeshkatti.com got hijacked. Thought it&apos;s a
 					good time for a redesign.
