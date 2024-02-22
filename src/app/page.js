@@ -1,6 +1,6 @@
 "use client";
 // app/page.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -66,12 +66,11 @@ const ThemeSwitcher = styled.div`
 
 const ComingSoon = () => {
 	const [dark, setDark] = useState(true);
-	const html = document.querySelector("html");
-	if (dark) {
-		html.dataset.theme = "dark";
-	} else {
-		html.dataset.theme = "light";
-	}
+	useEffect(() => {
+		const html = document.querySelector("html");
+		html.dataset.theme = dark ? "dark" : "light";
+	}, [dark]);
+
 	return (
 		<>
 			<Script
